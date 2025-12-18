@@ -1,0 +1,66 @@
+import React, { useState } from 'react';
+import { Brain } from 'lucide-react';
+
+const MentalHealthPage = () => {
+  const [showImportance, setShowImportance] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col justify-center max-w-5xl mx-auto px-6 py-12 relative">
+      
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Left Side: Title */}
+        <div className="space-y-6">
+          <div className="inline-block p-3 bg-indigo-100 rounded-2xl mb-4">
+            <Brain className="w-10 h-10 text-indigo-600" />
+          </div>
+          <h1 className="text-5xl md:text-6xl font-extrabold text-slate-800 leading-tight">
+            What is <br />
+            <span className="text-indigo-600">Mental Health?</span>
+          </h1>
+        </div>
+
+        {/* Right Side: Short Info */}
+        <div className="bg-white p-8 rounded-3xl shadow-lg border border-indigo-50 relative">
+          <p className="text-xl text-slate-600 leading-relaxed">
+            Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act. It also helps determine how we handle stress, relate to others, and make choices.
+          </p>
+          <div className="absolute -left-3 top-8 w-6 h-6 bg-white transform rotate-45 border-l border-b border-indigo-50 hidden md:block"></div>
+        </div>
+      </div>
+
+      {/* Bottom Buttons Area */}
+      <div className="mt-20">
+        <div className="flex flex-wrap gap-4 items-center">
+          <button 
+            onClick={() => setShowImportance(!showImportance)}
+            className={`px-8 py-4 rounded-full font-bold transition-all border-2 ${showImportance ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-indigo-600 border-indigo-100 hover:border-indigo-600'}`}
+          >
+            Why it Matters
+          </button>
+        </div>
+
+        {/* Dynamic Content Display */}
+        {showImportance && (
+          <div className="mt-8 p-6 bg-indigo-50 rounded-2xl border border-indigo-100 animate-fade-in-up">
+            <p className="text-indigo-900 text-lg">
+              <strong>Why it Matters:</strong> Mental health is vital at every stage of life, from childhood and adolescence through adulthood. It influences how we handle stress, relate to others, and make healthy choices.
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Animations */}
+      <style jsx global>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+          animation: fadeInUp 0.5s ease-out forwards;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default MentalHealthPage;
