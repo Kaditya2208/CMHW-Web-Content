@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 import { Brain } from 'lucide-react';
 
@@ -49,8 +50,8 @@ const MentalHealthPage = () => {
         )}
       </div>
 
-      {/* Animations */}
-      <style jsx global>{`
+      {/* Animations - Standard Style Tag for broad compatibility */}
+      <style>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
